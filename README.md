@@ -21,7 +21,7 @@ Install from the Zed extensions registry, or install as a dev extension by cloni
 
 ## Configuration
 
-The language server binary is automatically downloaded from [GitHub Releases](https://github.com/skanehira/version-lsp/releases). You can also specify a custom binary path in your Zed settings:
+By default, the language server binary is **not** downloaded automatically. Install the `version-lsp` binary manually and ensure it is on your `PATH`, or set a custom binary path:
 
 ```json
 {
@@ -35,6 +35,20 @@ The language server binary is automatically downloaded from [GitHub Releases](ht
 }
 ```
 
+To enable automatic download from [GitHub Releases](https://github.com/skanehira/version-lsp/releases), set `auto_download: true` in your settings:
+
+```json
+{
+  "lsp": {
+    "version-lsp": {
+      "settings": {
+        "auto_download": true
+      }
+    }
+  }
+}
+```
+
 ### Settings
 
 ```json
@@ -42,6 +56,7 @@ The language server binary is automatically downloaded from [GitHub Releases](ht
   "lsp": {
     "version-lsp": {
       "settings": {
+        "auto_download": true,
         "cache": {
           "refreshInterval": 86400000
         },
@@ -64,6 +79,7 @@ The language server binary is automatically downloaded from [GitHub Releases](ht
 
 | Option | Type | Default | Description |
 | --- | --- | --- | --- |
+| `auto_download` | boolean | `false` | Automatically download the `version-lsp` binary from GitHub Releases |
 | `cache.refreshInterval` | number | `86400000` | Cache refresh interval in milliseconds |
 | `registries.npm.enabled` | boolean | `true` | Enable npm registry checks |
 | `registries.crates.enabled` | boolean | `true` | Enable crates.io registry checks |

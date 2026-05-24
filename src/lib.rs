@@ -11,10 +11,9 @@ impl VersionLspExtension {
         language_server_id: &LanguageServerId,
         worktree: &zed::Worktree,
     ) -> Result<String> {
-        let binary_settings =
-            LspSettings::for_worktree(language_server_id.as_ref(), worktree)?
-                .binary;
-        let binary = binary_settings.and_then(|b| b.path);
+        let lsp_settings =
+            LspSettings::for_worktree(language_server_id.as_ref(), worktree)?;
+        let binary = lsp_settings.binary.and_then(|b| b.path);
 
         if let Some(path) = binary {
             return Ok(path);
@@ -24,7 +23,18 @@ impl VersionLspExtension {
             return Ok(path);
         }
 
-        self.zed_managed_binary(language_server_id)
+        let auto_download = lsp_settings
+            .settings
+            .as_ref()
+            .and_then(|s| s.get("auto_download"))
+            .and_then(|v| v.as_bool())
+            .unwrap_or(false);
+
+        if auto_download {
+            self.zed_managed_binary(language_server_id)
+        } else {
+            Err("version-lsp not found; install it manually or set `auto_download: true` in settings".into())
+        }
     }
 
     fn zed_managed_binary(
