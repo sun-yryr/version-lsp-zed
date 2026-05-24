@@ -8,4 +8,4 @@ repository = "https://github.com/sun-yryr/version-lsp-zed"
 
 [language_servers.version-lsp]
 name = "version-lsp"
-languages = ["JSON", "JSONC", "TOML", "Gomod", "YAML"]
+languages = ["JSON", "JSONC", "TOML", "Go Mod", "YAML", "Docker Compose"]
