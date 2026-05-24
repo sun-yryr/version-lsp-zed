@@ -2,22 +2,24 @@
 
 A [version-lsp](https://github.com/skanehira/version-lsp) extension for [Zed](https://zed.dev).
 
-Provides version checking diagnostics for package dependency files:
+Provides version checking diagnostics for package dependency files. See [version-lsp](https://github.com/skanehira/version-lsp) for the full list of supported file types.
 
-| File | Registry |
-| --- | --- |
-| `package.json` | npm |
-| `pnpm-workspace.yaml` | npm (pnpm catalogs) |
-| `Cargo.toml` | crates.io |
-| `go.mod` | Go Proxy |
-| `pyproject.toml` | PyPI |
-| `.github/workflows/*.yaml` / `.github/actions/*/*.yaml` | GitHub Releases |
-| `deno.json` / `deno.jsonc` | JSR |
-| `compose.yaml` / `docker-compose.yaml` | Docker Hub / ghcr.io |
+<table>
+<tr>
+<td align="center"><img src="docs/img/cargo.png" alt="Cargo.toml" width="100%"><br><sub><b>Cargo.toml</b> · crates.io</sub></td>
+<td align="center"><img src="docs/img/package.png" alt="package.json" width="100%"><br><sub><b>package.json</b> · npm</sub></td>
+<td align="center"><img src="docs/img/go.png" alt="go.mod" width="100%"><br><sub><b>go.mod</b> · Go Proxy</sub></td>
+</tr>
+<tr>
+<td align="center"><img src="docs/img/deno.png" alt="deno.json" width="100%"><br><sub><b>deno.json</b> · JSR</sub></td>
+<td align="center"><img src="docs/img/gha.png" alt="GitHub Actions" width="100%"><br><sub><b>GitHub Actions</b> · GitHub Releases</sub></td>
+<td></td>
+</tr>
+</table>
 
 ## Installation
 
-Install from the Zed extensions registry, or install as a dev extension by cloning this repository and selecting the directory via `zed: install dev extension`.
+Install as a dev extension by cloning this repository and selecting the directory via `zed: install dev extension`.
 
 ## Configuration
 
