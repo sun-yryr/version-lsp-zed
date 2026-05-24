@@ -103,8 +103,15 @@ impl VersionLspExtension {
             for entry in entries {
                 let entry =
                     entry.map_err(|e| format!("failed to load directory entry {e}"))?;
-                if entry.file_name().to_str() != Some(&version_dir) {
-                    fs::remove_dir_all(entry.path()).ok();
+                if let (Ok(file_type), Some(name)) =
+                    (entry.file_type(), entry.file_name().to_str())
+                {
+                    if file_type.is_dir()
+                        && name.starts_with("version-lsp-")
+                        && name != version_dir
+                    {
+                        fs::remove_dir_all(entry.path()).ok();
+                    }
                 }
             }
         }
