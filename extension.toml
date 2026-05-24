@@ -1,0 +1,11 @@
+id = "version-lsp"
+name = "version-lsp"
+version = "0.0.1"
+schema_version = 1
+authors = ["sun-yryr"]
+description = "A Language Server Protocol implementation that provides version checking diagnostics for package dependency files (package.json, Cargo.toml, go.mod, pyproject.toml, deno.json, compose.yaml, etc.)"
+repository = "https://github.com/sun-yryr/version-lsp-zed"
+
+[language_servers.version-lsp]
+name = "version-lsp"
+languages = ["JSON", "JSONC", "TOML", "Gomod", "YAML"]
